@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const app = express()
 const port = 3000
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 // 取得資料庫連線狀態
 const db = mongoose.connection
 // 連線異常
