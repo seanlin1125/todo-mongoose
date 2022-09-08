@@ -10,7 +10,9 @@ const routes = require('./routes')
 require('./config/mongoose')
 
 const app = express()
-const port = 3000
+// 如果在 Heroku 環境則使用 process.env.PORT
+// 否則為本地環境，使用 3000 
+const PORT = process.env.PORT || 3000
 
 // 設定handlebars
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
@@ -22,6 +24,6 @@ app.use(methodOverride('_method'))
 // 將 request 導入路由器
 app.use(routes)
 // listen
-app.listen(port, () => {
-  console.log(`Express is listening on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
